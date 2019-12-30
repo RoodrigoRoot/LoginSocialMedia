@@ -1,0 +1,29 @@
+{% load account %}
+
+{% user_display user %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    {% for account in user.socialaccount_set.all %}
+        <p>Username: {{ user.username }}</p>
+        <p>First Name: {{ account.extra_data.first_name }}</p>
+        <p>Last Name: {{ account.extra_data.last_name }}</p>
+        
+         
+        
+        <br/>
+        
+    {% endfor %}
+<img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt=":(" />
+    {{ user.socialaccount_set.all.0.get_avatar_url }}
+</body>
+</html>
