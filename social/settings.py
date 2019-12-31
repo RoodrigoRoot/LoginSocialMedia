@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.github',
-    'allauth.socialaccount.providers.google',
+    #'allauth.socialaccount.providers.google',
 ]
 
 SITE_ID = 1
@@ -101,17 +101,11 @@ SOCIALACCOUNT_PROVIDERS = \
         'VERIFIED_EMAIL': False,
         'VERSION': 'v2.4'},
         
-    'google': {
-        'SCOPE':['https://www.googleapis.com/auth/userinfo.profile', 
-        'https://www.googleapis.com/auth/userinfo.email'],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
+
   
       }
-
-ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'none' 
+ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
 SOCIALACCOUNT_EMAIL_REQUIRED = False
 SOCIALACCOUNT_QUERY_EMAIL = True
@@ -185,3 +179,11 @@ STATIC_URL = '/static/'
 
 #LOGIN_REDIRECT_URL = reverse("profile") 
 LOGIN_REDIRECT_URL = "/profile"
+
+
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_HOST = "smtp.gmail.com"
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = "rod.pyc@gmail.com"
+# EMAIL_HOST_PASSWORD = "ancestral1995"

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from allauth.socialaccount.models import SocialAccount
 
 class Index(View):
 
