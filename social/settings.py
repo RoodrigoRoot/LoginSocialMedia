@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
 ]
 
 SITE_ID = 1
@@ -77,7 +79,8 @@ TEMPLATES = [
 ]
 
 SOCIALACCOUNT_PROVIDERS = \
-    {'facebook':
+{
+    'facebook':
        {'METHOD': 'oauth2',
         'SCOPE': ['email','public_profile', 'user_friends'],
         'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
@@ -96,7 +99,22 @@ SOCIALACCOUNT_PROVIDERS = \
         'EXCHANGE_TOKEN': True,
         'LOCALE_FUNC': lambda request: 'kr_KR',
         'VERIFIED_EMAIL': False,
-        'VERSION': 'v2.4'}}
+        'VERSION': 'v2.4'},
+        
+    'google': {
+        'SCOPE':['https://www.googleapis.com/auth/userinfo.profile', 
+        'https://www.googleapis.com/auth/userinfo.email'],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+  
+      }
+
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_EMAIL_REQUIRED = False
+SOCIALACCOUNT_QUERY_EMAIL = True
 
 
 #facebook
